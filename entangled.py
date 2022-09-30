@@ -1,7 +1,6 @@
 from qiskit import QuantumRegister, ClassicalRegister
 from qiskit import QuantumCircuit, Aer, execute
 
-
 q1 = QuantumRegister(2);
 c1 = ClassicalRegister(2);
 

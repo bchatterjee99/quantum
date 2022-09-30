@@ -16,6 +16,17 @@ frame=single
 }
 \usepackage{hyperref}
 
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color
+  basicstyle=\footnotesize,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{green},    % comment style
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{red},     % string literal style
+  frame = single,
+}
+
 
 \begin{document}
 
@@ -111,6 +122,29 @@ quantum-circuit:
 
 \section{qtrng}
 \href{https://github.com/bchatterjee99/quantum/blob/master/qtrng.py}{https://github.com/bchatterjee99/quantum/blob/master/qtrng.py}
+%% \begin{lstlisting}[language=python]
+%% from qiskit import QuantumRegister, ClassicalRegister
+%% from qiskit import QuantumCircuit, Aer, execute
+
+
+%% q1 = QuantumRegister(1);
+%% c1 = ClassicalRegister(1);
+
+%% q2 = QuantumRegister(2);
+%% c2 = ClassicalRegister(2);
+
+%% qc = QuantumCircuit(q1, c1);
+%% backend = Aer.get_backend("qasm_simulator");
+
+%% qc.h(q1);
+%% qc.measure(q1, c1);
+
+%% for i in range(0, 100):
+%%     qjob = execute(qc, backend, shots=1);
+%%     counts = qjob.result().get_counts();
+%%     for key in counts.keys():
+%%         print(key);
+%% \end{lstlisting}
 
 
 \section{Entanglement}
@@ -137,6 +171,50 @@ quantum-circuit:
 \end{verbatim}
 \href{https://github.com/bchatterjee99/quantum/blob/master/entangled.py}{https://github.com/bchatterjee99/quantum/blob/master/entangled.py}
 
+\begin{lstlisting}[language=python]
+from qiskit import QuantumRegister, ClassicalRegister
+from qiskit import QuantumCircuit, Aer, execute
 
+q1 = QuantumRegister(2);
+c1 = ClassicalRegister(2);
+
+qc = QuantumCircuit(q1, c1);
+backend = Aer.get_backend("qasm_simulator");
+
+
+#-----------------------------------------------------------
+#
+#       +---------+                                         
+#       |         |                                         
+# |0> --|    H    |------------------------#------
+#       |         |   |0>+|1>              |               
+#       +---------+  ---------             |     
+#                     sqrt(2)              |   |01> + |10>    
+#                                          |   ----------- 
+#                                          |     sqrt(2)   
+#       +---------+                        |    
+#       |         |                        |    
+# |0> --|    X    |-----------------------|+|-----
+#       |         |     |1>                    
+#       +---------+              |                   
+#                                |                    
+#                                v                  
+#                                                              
+#                            |01> + |11>                     
+#       		     -----------
+#                              sqrt(2)              
+#
+#-----------------------------------------------------------
+
+qc.h(q1[0]);
+qc.x(q1[1]);
+qc.cx(q1[0], q1[1])
+qc.measure(q1, c1);
+
+qjob = execute(qc, backend, shots=100);
+counts = qjob.result().get_counts();
+
+print(counts)
+\end{lstlisting}
 
 \end{document}
