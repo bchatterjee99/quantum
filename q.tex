@@ -9,18 +9,18 @@
 \usepackage{amsmath}
 \usepackage{float}
 \usepackage{listings}
+\usepackage{xcolor}
 \lstset{
 basicstyle=\ttfamily,
 frame=single
 }
 \usepackage{hyperref}
 
+
 \begin{document}
 
 \section{Reversible Half Aadder}
-
 \begin{verbatim}
-
 Half-Adder:
 -----------
 
@@ -96,6 +96,47 @@ quantum-circuit:
 
 
 \end{verbatim}
+
+
+\section{Hamming Code}
+%% \hypersetup{%
+%%   colorlinks=true,% hyperlinks will be black
+%%   linkcolor=blue,
+%%   linkbordercolor=blue,% hyperlink borders will be red
+%%   pdfborderstyle={/S/U/W 1}, % border style will be underline of width 1pt
+%% }
+\href{https://github.com/bchatterjee99/quantum/blob/master/hamming.c}{https://github.com/bchatterjee99/quantum/blob/master/hamming.c}
+
+
+
+\section{qtrng}
+\href{https://github.com/bchatterjee99/quantum/blob/master/qtrng.py}{https://github.com/bchatterjee99/quantum/blob/master/qtrng.py}
+
+
+\section{Entanglement}
+\begin{verbatim}
+        +---------+                                         
+        |         |                                         
+  |0> --|    H    |------------------------#------
+        |         |   |0>+|1>              |               
+        +---------+  ---------             |     
+                      sqrt(2)              |   |01> + |10>    
+                                           |   ----------- 
+                                           |     sqrt(2)   
+        +---------+                        |    
+        |         |                        |    
+  |0> --|    X    |-----------------------|+|-----
+        |         |     |1>                    
+        +---------+              |                   
+                                 |                    
+                                 v                  
+                                                               
+                             |01> + |11>                     
+                             -----------
+                               sqrt(2)              
+\end{verbatim}
+\href{https://github.com/bchatterjee99/quantum/blob/master/entangled.py}{https://github.com/bchatterjee99/quantum/blob/master/entangled.py}
+
 
 
 \end{document}

@@ -1,17 +1,17 @@
 #-*-sh-*-
 
 
-file=hamming.c
-flags=""
+# file=hamming.c
+# flags=""
+# if gcc $flags $file; then
+#     echo -e "\n\n  compile hoe geche\n\n";
+#     ./a.out
+# else
+#     echo -e "\n\n  hocche na\n\n";
+# fi
+
+# python entangled.py
+
+pdflatex --output-directory ./tmp/ q.tex
 
 
-if gcc $flags $file; then
-    echo -e "\n\n  compile hoe geche\n\n";
-    ./a.out
-else
-    echo -e "\n\n  hocche na\n\n";
-fi
-
-
-
-# pdflatex --output-directory ./tmp/ q.tex

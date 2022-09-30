@@ -3,11 +3,24 @@
 
 #define R 3
 
-// get ith bit of n bit number
+// get ith bit of number
 int get_bit(unsigned long a, int i)
 {
     unsigned long x = ((unsigned long)1)<<i;
     return !!(a & x);
+}
+
+// get weight of n bit number
+int wt(unsigned long a, int n)
+{
+    unsigned long y = ((unsigned long)1<<(n-1));
+    int ans = 0;
+    while(y > 0)
+    {
+	ans = ans + !!( a & y);
+	y = y >> 1;
+    }
+    return ans;
 }
 
 
@@ -45,18 +58,6 @@ void parity_check_matrix(int r, unsigned char** M)
 }
 
 
-// get weight of n bit number
-int wt(unsigned long a, int n)
-{
-    unsigned long y = ((unsigned long)1<<(n-1));
-    int ans = 0;
-    while(y > 0)
-    {
-	ans = ans + !!( a & y);
-	y = y >> 1;
-    }
-    return ans;
-}
 
 
 
@@ -111,6 +112,7 @@ void generator_matrix(int r, unsigned char** M)
 }
 
 
+// encode k-bit message m into n-bit codeword using generator matrix G
 unsigned long encode(unsigned long m, unsigned char** G, int r)
 {
     unsigned long n = (1 << r) - 1;
@@ -143,6 +145,14 @@ unsigned long encode(unsigned long m, unsigned char** G, int r)
     }
     printf("\n\n");
 }
+
+
+// likely error patterns ki hobe
+unsigned long syndrome_decoding(unsigned long received, int r)
+{
+    
+}
+
 
 void size(int r)
 {
