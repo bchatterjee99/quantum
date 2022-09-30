@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage[a4paper, total={7in, 10in}]{geometry}
+%% \usepackage[english]{babel}
+\usepackage{blindtext}
+\usepackage{graphicx }
+\usepackage{wrapfig}
+\graphicspath{ {./img/} }
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{listings}
+\lstset{
+basicstyle=\ttfamily,
+frame=single
+}
+\usepackage{hyperref}
+
+\begin{document}
+
+\section{Reversible Half Aadder}
+
+\begin{verbatim}
+
+Half-Adder:
+-----------
+
+            +---------------+
+            |               |                       +-------------------+
+     a ---->|               |----> a ^ b            | a | b | a^b | a&b |
+            |               |                       +---|---|-----------|
+            |       HA      |                       | 0 | 0 |  0  |  0  |
+            |               |                       | 0 | 1 |  1  |  0  |
+     b ---->|               |----> a & b            | 1 | 0 |  1  |  0  |
+            |               |                       | 1 | 1 |  0  |  1  |
+            +---------------+                       +-------------------|
+
+
+reversible:
+-----------
+
+         +-----------------------+
+         |                       |
+  a ---->|                       |----> a    
+         |                       |
+         |                       |
+  b ---->|                       |----> b    
+         |                       |
+         |          U            |
+         |           HA          |
+         |                       |
+  c ---->|                       |----> c ^ (a ^ b)   
+         |                       |
+         |                       |
+  d ---->|                       |----> d ^ (a & b)  
+         |                       |
+         +-----------------------+
+\end{verbatim}
+
+
+\end{document}

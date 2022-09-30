@@ -1,0 +1,3 @@
+#-*-sh-*-
+
+pdflatex --output-directory ./tmp/ q.tex
